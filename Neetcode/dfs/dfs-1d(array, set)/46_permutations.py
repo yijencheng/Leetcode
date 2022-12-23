@@ -1,4 +1,4 @@
-# wrong!  4~5個地方
+# wrong!
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         ans = []
@@ -24,4 +24,22 @@ class Solution:
 
         dfs([], nums)
         return ans
+
+# set
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        nums = set(nums)
+        ans = []
+        def dfs(cur, options):
+            if not options:
+                ans.append(cur)
+                return
+            for o in options:
+                tmp = options.copy()
+                tmp.remove(o)
+                dfs(cur+[o], tmp)
+        dfs([], nums)
+        return ans
+                
+        
                 
