@@ -1,10 +1,10 @@
 
-// input: [1,1,2,3,3,5,5](sorted list)
+## input: [1,1,2,3,3,5,5](sorted list)
 
 
-// 0,1,2,3
+## 0,1,2,3
 
-// FindOdd ...
+## First thought: binary search
 func FindOdd(arr []int) int {
 	i,j := 0, len(arr)-1
 	for {
@@ -30,6 +30,7 @@ func FindOdd(arr []int) int {
 		}
 		
 		// check answer is in left or right
+        // when index=i, length = l >> there are [i elements on the left], [l-i-1 elements on the right] 
 		if (l %2) != 0{
 			j = l-1
 			continue
