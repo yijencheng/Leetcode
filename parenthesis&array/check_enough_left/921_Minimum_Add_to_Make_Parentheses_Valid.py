@@ -6,8 +6,8 @@ class Solution:
             if p == '(':
                 l+=1
             else:
-                if l >0:
+                if l > 0: # right is valid and enough left
                     l-=1
                 else:
                     extra_right+=1
-        return l + extra_right
+        return l + extra_right 
