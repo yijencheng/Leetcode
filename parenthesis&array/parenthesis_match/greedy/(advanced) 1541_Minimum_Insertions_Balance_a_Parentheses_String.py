@@ -8,7 +8,7 @@ class Solution:
             if p == '(':
                 l +=1
             else:
-                # valid case
+                # valid right
                 if i+1<len(s) and s[i+1] == ')':
                     l-=1
                     i+=1

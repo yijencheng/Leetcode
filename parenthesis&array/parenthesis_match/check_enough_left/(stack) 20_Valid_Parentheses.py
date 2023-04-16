@@ -7,11 +7,10 @@ class Solution:
             "[":"]",
         }
         for ch in s:
-            if ch in d.keys():
+            if ch in ["(", "{", "["]:
                 stack.append(ch)
-                continue
-
-            if len(stack)==0 or ch!= d[stack.pop()]:
-                return False
+            else:
+                if len(stack)==0 or ch!= d[stack.pop()]:
+                    return False
                 
         return len(stack) == 0 

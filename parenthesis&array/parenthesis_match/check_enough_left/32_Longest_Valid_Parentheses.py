@@ -1,3 +1,24 @@
+# todo! 
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        stack = []
+        ans = 0
+        current_start = -1
+        # ()()
+        # (())
+        for i in range(len(s)):
+            p = s[i]
+            if  p == '(':
+                stack.append(i)
+            else:
+                if len(stack) > 0:
+                    stack.pop()
+                    ans = max(ans, i-current_start)  
+                else:
+                    current_start = i
+        return ans
+
+# correct
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
         stack = []
@@ -18,7 +39,6 @@ class Solution:
                 else:
                     stack.append(i)
         return ans
-
 
 
 # wrong

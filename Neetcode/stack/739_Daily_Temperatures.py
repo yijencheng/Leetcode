@@ -1,3 +1,5 @@
+# Idea: 
+# 
 # Better
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
@@ -11,7 +13,7 @@ class Solution:
             stack.append((cur, i))
         return ans
 
-# takeaway: 先確認pop的情境、最後再append。見
+# takeaway: 先確認pop的情境、最後再append。
 # correct
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
