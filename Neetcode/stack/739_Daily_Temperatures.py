@@ -1,5 +1,19 @@
-# Idea: 
-# 
+# better & simplified
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        stack = [0]
+        ans = [0]*len(temperatures)
+        # for each elem
+        # if larger than temp[start], means larger than temp[start~i-1]
+            # update all ans
+        # 
+        for i, v in enumerate(temperatures):
+            while len(stack) > 0 and v > temperatures[stack[-1]]:
+                    top = stack.pop()
+                    ans[top] = i-top
+            stack.append(i)
+        return ans
+
 # Better
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
