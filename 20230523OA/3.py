@@ -1,5 +1,6 @@
-# you can write to stdout for debugging purposes, e.g.
-# print("this is a debug message")
+# split string: 
+# - INPUT: "abacdec"
+# - OUTPUT: 3. one answer will be (a, bac, dec)
 
 def solution(S):
     # Implement your solution here

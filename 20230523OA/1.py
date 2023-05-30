@@ -1,5 +1,8 @@
-# you can write to stdout for debugging purposes, e.g.
-# print("this is a debug message")
+# Obtain an array in which every value occurs a unique number of times.
+# Find the minimum number of integers that must be deleted from A 
+
+# INPUT: [1,1,1,2,2,2]
+# OUTPUT: 1
 
 import collections
 #every number occur uniq number of time

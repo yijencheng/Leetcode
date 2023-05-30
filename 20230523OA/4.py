@@ -1,5 +1,7 @@
-# you can write to stdout for debugging purposes, e.g.
-# print("this is a debug message")
+# Delete some letter in S, so that strings consisting only AB where every A happens before B
+# Example:
+# - INPUT: "BAAABAB"
+# - OUTPUT: "2" >> delete the first 'B' and the last 'A'
 
 def solution(S):
     # Implement your solution here

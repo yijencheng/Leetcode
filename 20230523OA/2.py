@@ -1,8 +1,4 @@
-# Remember, all submissions are being checked for plagiarism.
-# Your recruiter will be informed in case suspicious activity is detected.
 
-# you can write to stdout for debugging purposes, e.g.
-# print("this is a debug message")
 
 def solution(blocks):
     ans = 0
@@ -13,6 +9,7 @@ def solution(blocks):
         if (i<len(blocks)-1 and blocks[i+1]<h) or (i>=0 and blocks[i-1]<h):
             continue
         l,r = i,i
+        # find leftmost number, where blocks[l-1] >= blocks [l]
         while l>0:
             if blocks[l-1]< blocks[l]:
                 break
