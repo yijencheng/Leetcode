@@ -14,7 +14,6 @@ when appear 1st time
 * update appear
 * update ans
 
-
 # correct
 # 順序：判斷 check valid >> update left >> update right
 class Solution:
@@ -32,47 +31,7 @@ class Solution:
                     l+=1
                 appear.add(s[r])
 
-                ## no need to update longest
-                    
-        return longest
-
-
-# cleaner: check valid + update left  >> 
-class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        appear = set()
-        longest = 0
-        l = 0
-
-        for r in range(len(s)):
-            while s[r] in appear: # have other ways ! while s[r] not in appear: 
-                appear.remove(s[l])
-                l+=1
-            appear.add(s[r])
-            longest = max(longest, r-l+1)
-
-        return longest
-
-
-
-#wrong!!!
-1. lenght shoudl be r-l+1
-2. while should have l++
-3. right should start with index=0
-class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        appear = set()
-        longest = 0
-        l = 0
-
-        for r in range(1, len(s)):
-            if s[r] not in appear:
-                appear.add(s[r])
-                longest = max(longest, r-l)
-            else:
-                while s[l]!=s[r]:
-                    appear.remove(s[l])
-                l+=1
+                ## no need to update longest    
         return longest
 
 # sol2: use map (have lots of needy-greedy detail...)
