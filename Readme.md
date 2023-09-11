@@ -1,3 +1,14 @@
+Tags
+Dict
+#tag:duplicate
+#tag:frequency
+
+Array
+
+
+
+
+
 # 先還是後?
 ### sliding window 的先後
 p219
@@ -44,6 +55,6 @@ while i<len(arr) and condition:
 
 i = 0
 while i<len(arr):
-    if !{n+1 condition}:
+    if !condition:
         break
     i+=1
