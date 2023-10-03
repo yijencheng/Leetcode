@@ -7,7 +7,7 @@ Array
 
 
 
-
+### Divide and Conquer
 
 # 先還是後?
 ### sliding window 的先後
@@ -48,7 +48,6 @@ p219
 * 跟Array搭配，記住Index (p.1249)
 
 ### While loop
-* 停在符合條件的index vs 停在第一個不符合的index
 i = 0
 while i<len(arr) and condition:
     i+=1
@@ -58,3 +57,5 @@ while i<len(arr):
     if !condition:
         break
     i+=1
+
+

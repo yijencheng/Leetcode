@@ -12,17 +12,20 @@ class Solution:
         return longest
 
 
-# correct. Sliding window (check old first)
+# correct (Best). Sliding window
 class Solution:
       def lengthOfLongestSubstring(self, s: str) -> int:
         longest = 0
-        sets = set()
+        window = set()
         l=0
-        for i in range(len(s)):
-            while s[i] in sets:
-                sets.remove(s[l])
+        for i, ch in enumerate(s):
+            ## consider current, update window
+            while ch in window:
+                window.remove(s[l])
                 l+=1
-            sets.add(s[i])
+            window.add(ch)
+            
+            ## update ans 
             longest = max(longest, i-l+1)
         return longest
 
@@ -55,21 +58,6 @@ class Solution:
             d[s[i]] = i
         return longest
 
-
-# use map (have lots of needy-greedy detail...)
-# wrong!!!!
-class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        d_idx = {}
-        longest = 0
-        for i,ch in enumerate(s):
-            if ch not in d_idx:
-                d_idx[ch] = i
-                longest = i+1
-            else:
-                longest = max(i-d_idx[ch], longest)
-                d_idx[ch] = i
-        return longest
 
 # other shitty solution that works...
 # correct

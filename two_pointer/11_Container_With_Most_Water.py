@@ -3,18 +3,12 @@
 
 class Solution:
     def maxArea(self, height: List[int]) -> int:
+        ans = 0
         start, end = 0, len(height)-1
-        most = 0
-        def calArea(start,end):
-            w = end-start
-            h = min(height[start],height[end])
-            return w*h
-
-        while start <end:
-            most = max(most, calArea(start,end))
+        while start<end:
+            ans = max(ans, min(height[start], height[end])*(end-start))
             if height[start]<=height[end]:
                 start+=1
             else:
                 end-=1
-
-        return most
+        return ans

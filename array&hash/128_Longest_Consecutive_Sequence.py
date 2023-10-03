@@ -8,6 +8,21 @@ class Solution:
         longest = 0
         for num in nums:
             if num-1 not in appear:
+                tmp = num
+                while True:
+                    tmp+=1
+                    if tmp not in appear:
+                        break
+                longest = max(longest, tmp-1-num+1)
+        return longest
+
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        appear = set(nums)
+        longest = 0
+        for num in nums:
+            if num-1 not in appear:
+                # find 
                 tmp = num +1
                 while tmp in appear:
                     tmp+=1

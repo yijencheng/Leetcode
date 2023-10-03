@@ -2,6 +2,26 @@ Input: s1 = "ab", s2 = "eidbaooo"
 Output: true
 Explanation: s2 contains one permutation of s1 ("ba").
 
+# best
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        counter = collections.Counter(s1)
+        d = {}
+        l = 0
+        for i,ch in enumerate(s2):
+            if ch not in counter.keys():
+                l = i+1
+                d = {}
+            else:
+                while d.get(ch, 0) >= counter[ch]:
+                    if s2[l] in d:
+                        d[s2[l]]-=1
+                    l+=1
+                d[ch] = d.get(ch, 0)+1
+                if sum(d.values()) == len(s1):
+                    return True
+        return False
+
 
 # add first 
 class Solution:
@@ -24,6 +44,7 @@ class Solution:
                 
                 if r-l+1 == len(s1):return True
         return False
+
 # add first (refactor)
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
