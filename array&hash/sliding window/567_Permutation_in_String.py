@@ -2,7 +2,7 @@ Input: s1 = "ab", s2 = "eidbaooo"
 Output: true
 Explanation: s2 contains one permutation of s1 ("ba").
 
-# best
+# add last. 
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
         counter = collections.Counter(s1)
@@ -14,35 +14,11 @@ class Solution:
                 d = {}
             else:
                 while d.get(ch, 0) >= counter[ch]:
-                    if s2[l] in d:
-                        d[s2[l]]-=1
+                    d[s2[l]]-=1 # don't need to prevent keyError, as every left should be added before
                     l+=1
                 d[ch] = d.get(ch, 0)+1
-                if sum(d.values()) == len(s1):
+                if i-l+1 == len(s1): # can also use sum(d.values())
                     return True
-        return False
-
-
-# add first 
-class Solution:
-    def checkInclusion(self, s1: str, s2: str) -> bool:
-        counter = collections.Counter(s1)
-        d = {} #current cumulate count
-        l= 0
-        for r in range(len(s2)):
-            if s2[r] not in s1:
-                d = {} 
-            else:
-                # check + update left
-                if d == {}: #the first
-                    l = r
-
-                d[s2[r]] = d.get(s2[r], 0) + 1  # update right first, also prevent keyError
-                while d[s2[r]] > counter[s2[r]]:
-                    d[s2[l]] -=1
-                    l+=1
-                
-                if r-l+1 == len(s1):return True
         return False
 
 # add first (refactor)
