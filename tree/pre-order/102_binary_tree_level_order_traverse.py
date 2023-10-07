@@ -6,7 +6,7 @@ class Solution:
         ans = []
         def dfs(level,root):
             if not root:return
-            if len(ans) == level:
+            if len(ans) == level: # ensure every level have space to append
                 ans.append([])
             ans[level].append(root.val)
             dfs(level+1, root.left)
@@ -29,6 +29,7 @@ class Solution:
 
         dfs(root)
         return ans
+
 
 # wrong!!! 
 [1,2,3,4,5]
@@ -53,7 +54,7 @@ class Solution:
         traverse(0, root)
         return ans
 
-
+# fix the upper one
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root: return []

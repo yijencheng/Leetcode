@@ -51,8 +51,36 @@ class Solution:
         return ans
 
 
-#### super hard one (add last)
+# solution, but with slight redundancy
+class Solution:
+    def minWindow(self, s, t):
+        l = 0
+        found = False
+        matched = 0
+        ans = s
+        tCounter = collections.Counter(t)
+        d = {} # window
+        for i in range(len(s)):
+            if s[i] not in tCounter:
+                continue
+            else:
+                d[s[i]] = d.get(s[i], 0)+1 # only add key in t to dict
+                if d[s[i]] == tCounter[s[i]]:
+                    matched +=1
+                while matched == len(tCounter.keys()):
+                    if i-l+1<=len(ans):
+                        found = True
+                        ans = s[l:i+1]
+                    if s[l] in d: # this check is needed
+                        if d[s[l]] == tCounter[s[l]]:# becareful is s[l] not s[i]
+                            matched-=1
+                        d[s[l]]-=1
+                    l+=1
+        if not found:return ""
+        return ans
 
+
+#### super hard sols (add last)
 class Solution:
     def minWindow(self, s, t):
         """
@@ -99,32 +127,6 @@ class Solution:
 
 
 
-class Solution:
-    def minWindow(self, s, t):
-        l = 0
-        found = False
-        matched = 0
-        ans = s
-        tCounter = collections.Counter(t)
-        d = {} # window
-        for i in range(len(s)):
-            if s[i] not in tCounter:
-                continue
-            else:
-                d[s[i]] = d.get(s[i], 0)+1
-                if d[s[i]] == tCounter[s[i]]:
-                    matched +=1
-                while matched == len(tCounter.keys()):
-                    if i-l+1<=len(ans):
-                        found = True
-                        ans = s[l:i+1]
-                    if s[l] in d:
-                        if d[s[l]] == tCounter[s[l]]:# becareful is s[l] not s[i]
-                            matched-=1
-                        d[s[l]]-=1
-                    l+=1
-        if not found:return ""
-        return ans
 
 # passed
 class Solution:

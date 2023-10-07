@@ -2,7 +2,7 @@
 * 先還是後？
 * 如何更新min, max
 
-#best
+#best: use "boundary"
 class Solution:
     def isValidBST(self, root: TreeNode) -> bool:
         def valid(node, left, right):

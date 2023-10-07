@@ -1,6 +1,7 @@
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         found = [None]
+        # recurive check if [p,q] can be found in this tree
         def dfs(root):
             if not root:return False, False
             lp, lq = dfs(root.left)

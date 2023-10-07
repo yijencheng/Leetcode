@@ -2,6 +2,26 @@ Input: s1 = "ab", s2 = "eidbaooo"
 Output: true
 Explanation: s2 contains one permutation of s1 ("ba").
 
+# add first ,fix length window
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        counter = collections.Counter(s1)
+        d = {}
+        l = 0
+        matched = 0
+        for i in range(len(s2)):
+            d[s2[i]] = d.get(s2[i], 0) + 1        
+            if d[s2[i]] == counter[s2[i]]:
+                matched+=1
+            while i-l+1>len(s1):
+                if d[s2[l]] == counter[s2[l]]:
+                    matched-=1
+                d[s2[l]]-=1
+                l+=1
+            if matched == len(counter.keys()):
+                return True
+        return False
+
 # add last. 
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
@@ -27,18 +47,17 @@ class Solution:
         counter = collections.Counter(s1)
         d = {} #current cumulate count
         l= 0
-        for r in range(len(s2)):
-            if s2[r] not in s1:
+        for i in range(len(s2)):
+            if s2[i] not in s1:
                 d = {}
-                l = r+1
+                l = i+1
             else:
                 # check + update left
-                d[s2[r]] = d.get(s2[r], 0) + 1  # update right first, also prevent keyError
-                while d[s2[r]] > counter[s2[r]]:
+                d[s2[i]] = d.get(s2[i], 0) + 1  # update right first, also prevent keyError
+                while d[s2[i]] > counter[s2[i]]:
                     d[s2[l]] -=1
                     l+=1
-                
-                if r-l+1 == len(s1):return True
+                if i-l+1 == len(s1):return True
         return False
 
 
@@ -167,5 +186,4 @@ class Solution:
 
                 if r-l+1 == len(s1):return True
         return False
-            
             
