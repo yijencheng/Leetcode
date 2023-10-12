@@ -22,10 +22,11 @@ class Solution:
         largest = float(-inf)
         cur_sum = 0
         for num in nums:
+            ## Also can replace with: cur_sum = max(cur_sum+num, num)
             if cur_sum <0:
-                cur_sum = num
-            else:
-                cur_sum+=num
+                cur_sum = 0
+            cur_sum+=num
+            ## 
             largest = max(largest, cur_sum)
             
         return largest
