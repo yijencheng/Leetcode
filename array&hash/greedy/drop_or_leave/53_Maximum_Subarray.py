@@ -13,7 +13,7 @@ class Solution:
             cur_sum+=num
             largest = max(largest, cur_sum)
             if cur_sum <0:
-                cur_sum = num
+                cur_sum = num ## wrong here
         return cur_sum
             
 #correct
@@ -30,5 +30,31 @@ class Solution:
             largest = max(largest, cur_sum)
             
         return largest
+
+# also correct. For front vs back, see how-to: cumulate
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        res = nums[0]
+
+        total = 0
+        for n in nums:
+            total += n
+            res = max(res, total)
+            if total < 0:
+                total = 0
+        return res
+
+# also correct~~~
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        cur_sum = 0
+        largest = nums[0]
+        for num in nums:
+            cur_sum = max(cur_sum+num, num)
+            largest = max(largest, cur_sum)
+            
+        return largest
+
+
             
             
