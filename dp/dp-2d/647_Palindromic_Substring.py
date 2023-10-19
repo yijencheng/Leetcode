@@ -1,3 +1,21 @@
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        dp = [[False for _ in range(len(s))] for _ in range(len(s))]
+        count = 0
+        for j in range(0, len(s)):
+            for i in range(j+1):
+                if i == j:
+                    dp[i][j] = True
+                elif j == i+1:
+                    dp[i][j] = (s[i] == s[j])
+                else:
+                    dp[i][j] = (dp[i+1][j-1] and s[i] == s[j])
+
+                if dp[i][j]:
+                    count+=1
+        return count
+
+# slightly ugly
 def countSubstrings(s: str) -> int:
         dp = [[False for _ in range(len(s))] for _ in range(len(s))]
         count = 0

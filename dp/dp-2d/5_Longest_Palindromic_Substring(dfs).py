@@ -1,10 +1,14 @@
-# store true/false
+# dp[(l,r)]: if s[l:r+1] is a palindrome
+# - True, if dp[l+1, r-1] and s[l] == s[r]
+# - false, otherwise
+# Exceed memory limit
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         dp = {}
         def dfs(l,r):
             if l >= r:
                 return True
+
             if (l,r) in dp:
                 return dp[(l,r)]
 
@@ -45,6 +49,7 @@ class Solution:
                 else:
                     dp[(l,r)] = option2
             return dp[(l,r)]
+
         index = dfs(0, len(s)-1)
         return s[index[0]:index[1]+1]
 
