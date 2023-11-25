@@ -1,4 +1,9 @@
 # without sliding window
+# Idea: 
+# for every new element encounter, check if there's a smaller window start with index=i and ends with index smaller than i, whose sum >= target
+
+
+
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         min_length = float("inf")
